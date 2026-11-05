@@ -26,6 +26,8 @@ export function Film() {
   const [time, setTime] = useState(0);
   const [started, setStarted] = useState(false);
   const userPaused = useRef(false);
+  const seenOnce = useRef(false);
+  const attempted = useRef(false);
   const reduced = useRef(false);
 
   // Pick the source for this screen: 720p on phones (or Save-Data), 1080p elsewhere.
@@ -56,11 +58,14 @@ export function Film() {
     else { userPaused.current = true; v.pause(); }
   }, [play]);
 
+  const savePref = (on: boolean) => { try { localStorage.setItem("nb-film-sound", on ? "on" : "off"); } catch { /* storage blocked */ } };
+
   const toggleMute = useCallback(() => {
     const v = video.current;
     if (!v) return;
     v.muted = !v.muted;
     setMuted(v.muted);
+    savePref(!v.muted);
     if (!v.muted && v.paused) play(true);
   }, [play]);
 
@@ -75,11 +80,34 @@ export function Film() {
       const v = video.current;
       if (!v) return;
       if (e.isIntersecting && e.intersectionRatio >= 0.6) {
-        if (!reduced.current && !nav.connection?.saveData && !userPaused.current && v.paused && !v.ended) play(false);
-      } else if (!v.paused) { v.pause(); }
+        seenOnce.current = true;
+        if (!reduced.current && !nav.connection?.saveData && !userPaused.current && v.paused && !v.ended) { if (!v.muted && !attempted.current) return; play(false); }
+      } else if (seenOnce.current && !v.paused) { v.pause(); }
     }, { threshold: [0, 0.6] });
     near.observe(el); seen.observe(el);
-    return () => { near.disconnect(); seen.disconnect(); };
+
+    // Audible autoplay is attempted once, on page load. Browsers usually refuse it without a prior tap: then the film
+    // starts silent and the visible Unmute button stays on the player. The policy is never bypassed.
+    const wantsSound = (() => { try { return localStorage.getItem("nb-film-sound") !== "off"; } catch { return true; } })();
+    const attempt = async () => {
+      const v = video.current;
+      if (!v || attempted.current || reduced.current || nav.connection?.saveData) return;
+      attempted.current = true;
+      load();
+      if (!wantsSound) { v.muted = true; setMuted(true); return; }
+      v.muted = false; v.volume = 1; setMuted(false);
+      try { await v.play(); }
+      catch {
+        v.muted = true; setMuted(true);
+        try { await v.play(); } catch { /* even silent play refused: poster and play button stay */ }
+      }
+    };
+    let idle = 0;
+    const kick = () => { idle = window.setTimeout(attempt, 400); };
+    if (document.readyState === "complete") kick(); else window.addEventListener("load", kick, { once: true });
+    const onHide = () => { const v = video.current; if (document.hidden && v && !v.paused) v.pause(); };
+    document.addEventListener("visibilitychange", onHide);
+    return () => { near.disconnect(); seen.disconnect(); window.clearTimeout(idle); window.removeEventListener("load", kick); document.removeEventListener("visibilitychange", onHide); };
   }, [load, play]);
 
   const onKey = (e: React.KeyboardEvent) => {
@@ -120,7 +148,10 @@ export function Film() {
             poster={FILM.poster}
             preload="none"
             controls
-            controlsList="nodownload"
+            controlsList="nodownload noremoteplayback"
+            disablePictureInPicture
+            draggable={false}
+            onContextMenu={(e) => e.preventDefault()}
             muted
             playsInline
             width={1920}
@@ -135,6 +166,17 @@ export function Film() {
           >
             <noscript><a href="/__f/nabin-brand-film-720p.mp4">Watch the film (MP4)</a></noscript>
           </video>
+
+          <button
+            type="button"
+            onClick={toggleMute}
+            className="absolute right-3 top-3 z-20 flex h-11 items-center gap-2 rounded-full bg-black/60 px-4 text-[13px] font-medium text-[#F2F4F2] ring-1 ring-white/20 backdrop-blur-sm transition-colors hover:bg-black/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage"
+            aria-pressed={!muted}
+            aria-label={muted ? "Unmute the film" : "Mute the film"}
+          >
+            {muted ? <VolumeX size={18} aria-hidden /> : <Volume2 size={18} aria-hidden />}
+            <span>{muted ? "Unmute" : "Mute"}</span>
+          </button>
 
           {!playing ? (
             <button
@@ -154,7 +196,7 @@ export function Film() {
           <summary className="cursor-pointer select-none font-mono text-[11.5px] uppercase tracking-[0.14em] text-mist/60 hover:text-mist">On-screen text</summary>
           <div id="film-desc" className="mt-3 space-y-2">
             <p>Music only, no narration. Original score.</p>
-            <p>1. Nabin Babu Uranw (नवीन बाबु उराँव). 2. “I’m Nabin Babu Uranw — I Build Digital Experiences.” Based in Inaruwa, Sunsari, Koshi Province, Nepal. Full-Stack Developer, Website Developer, UI/UX Designer, Automation Specialist. “I design and develop modern websites, web applications and digital products.” 3. Skills: Frontend Development, Backend Development, UI/UX Design, AI Integration, Automation, Database Architecture. 4. Selected work, captured from the live sites: NEXA, Byawastha, Chukta, Palo, Kotha, and the IEBS school website (independent demo); also Nepali Date, My Predictor, ADSRUN Agency, Aama Collection (concept), Trishna (concept) and this portfolio. 5. Code from the Kotha repository beside its rent ledger (demo data), and Chukta, Palo and Kotha on desktop and phone. 6. Nabin Babu Uranw, Independent Developer | Digital Creator, nabin-uranw.sites.tab.bot, +977-9764465688.</p>
+            <p>1. Nabin Babu Uranw (नवीन बाबु उराँव). 2. “I’m Nabin Babu Uranw — I Build Digital Experiences.” Based in Inaruwa, Sunsari, Koshi Province, Nepal. Full-Stack Developer, Website Developer, UI/UX Designer, Automation Specialist. “I design and develop modern websites, web applications and digital products.” 3. Skills: Frontend Development, Backend Development, UI/UX Design, AI Integration, Automation, Database Architecture. 4. Selected work, captured from the live sites: NEXA, Byawastha, Chukta, Palo, Kotha, and the IEBS school website (independent demo); also Nepali Date, My Predictor, ADSRUN Agency, Aama Collection (concept), Trishna (concept) and this portfolio. 5. Code from the Kotha repository beside its rent ledger (demo data), and Chukta, Palo and Kotha on desktop and phone. 6. Nabin Babu Uranw, Independent Developer | Digital Creator, nabinbabuuranw.com.np.</p>
           </div>
         </details>
       </div>
