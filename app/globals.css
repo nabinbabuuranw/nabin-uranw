@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { @apply bg-paper font-sans text-ink antialiased; font-feature-settings: "ss01", "cv11"; }
+::selection { background: #9CC5A1; color: #1F2421; }
+section[id], header[id] { scroll-margin-top: 76px; }
+
+@layer components {
+  .shell { @apply mx-auto w-full max-w-shell px-5 sm:px-8; }
+  .eyebrow { @apply font-mono text-[11.5px] uppercase tracking-[0.14em] text-muted; }
+  .rule { @apply border-mist; }
+  .btn { @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-full px-6 text-[15px] font-medium transition-[background-color,color,border-color,transform] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teal focus-visible:ring-offset-2 focus-visible:ring-offset-paper active:scale-[0.98]; }
+  .btn-primary { @apply btn bg-teal text-white hover:bg-teal-deep; }
+  .btn-ghost { @apply btn border border-ink/15 bg-white/60 text-ink hover:border-ink/40 hover:bg-white; }
+  .chip { @apply inline-flex items-center rounded-full border border-ink/10 bg-white px-2.5 py-1 font-mono text-[11.5px] text-ink/80; }
+  .link-u { background-image: linear-gradient(currentColor, currentColor); background-size: 0% 1px; background-repeat: no-repeat; background-position: 0 100%; transition: background-size .3s ease; }
+  .link-u:hover, .link-u:focus-visible { background-size: 100% 1px; }
+}
+
+/* subtle paper texture: a fine dot grid, no gradients */
+.dotgrid { background-image: radial-gradient(rgba(31,36,33,.09) 1px, transparent 1px); background-size: 22px 22px; }
+.dotgrid-dark { background-image: radial-gradient(rgba(220,225,222,.07) 1px, transparent 1px); background-size: 22px 22px; }
+
+.skeleton { position: relative; overflow: hidden; background: #E5E9E6; border-radius: 6px; }
+.skeleton::after { content: ""; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), transparent); animation: shimmer 1.4s infinite; }
+@keyframes shimmer { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { .skeleton::after { animation: none; } }
+
+.live-dot { position: relative; }
+.live-dot::after { content: ""; position: absolute; inset: -3px; border-radius: 9999px; border: 1px solid currentColor; opacity: .5; animation: ping 2.2s cubic-bezier(0,0,.2,1) infinite; }
+@keyframes ping { 75%, 100% { transform: scale(1.9); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .live-dot::after { animation: none; } }
+
+.rise { animation: rise .75s cubic-bezier(.22,1,.36,1) both; }
+@keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .rise { animation: none; } }
+
+/* Signature reveal: a one-time left-to-right wipe of the nav signature (~1.2 s).
+   Pure CSS clip-path on a small SVG, so it never blocks paint or LCP. Off under reduced motion. */
+.sig-reveal { animation: sig-wipe 1.2s cubic-bezier(.65,.05,.36,1) .15s both; }
+@keyframes sig-wipe { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .sig-reveal { animation: none; clip-path: none; } }
+
+/* Fail-safe: scroll-reveal sections start at opacity 0 and are shown by JS. If the page never hydrates (JS error, blocked
+   script) or the browser has no IntersectionObserver, force them visible after 1.8 s so content can never stay hidden.
+   When hydration works (html.hydrated) the original Framer Motion entrance animations run untouched. */
+@keyframes reveal-failsafe { to { opacity: 1; transform: none; } }
+html:not(.hydrated) main [style*="opacity: 0"], html:not(.hydrated) main [style*="opacity:0"] { animation: reveal-failsafe .35s ease-out 1.8s forwards; }
