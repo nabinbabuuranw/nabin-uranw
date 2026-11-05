@@ -1,0 +1,253 @@
+{
+ "fetchedAt": "2026-11-03T12:50:13.630Z",
+ "source": "build",
+ "profile": {
+  "login": "nabinbabuuranw",
+  "name": "नवीन बाबु उराँव",
+  "avatar": "https://avatars.githubusercontent.com/u/262948512?v=4",
+  "url": "https://github.com/nabinbabuuranw"
+ },
+ "repos": [
+  {
+   "name": "nabinbabuuranw-site",
+   "url": "https://github.com/nabinbabuuranw/nabinbabuuranw-site",
+   "description": "Portfolio of Nabin Babu Uranw, independent full-stack developer & UI/UX designer, with a project-request system (request IDs, status tracking, admin). Next.js, Prisma, Clerk.",
+   "language": "TypeScript",
+   "topics": [
+    "clerk",
+    "nepal",
+    "nextjs",
+    "portfolio",
+    "postgresql",
+    "prisma",
+    "request-tracking",
+    "tailwindcss",
+    "typescript",
+    "web-development"
+   ],
+   "homepage": "https://nabinbabuuranw.sites.tab.bot",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": null,
+   "defaultBranch": "main",
+   "createdAt": "2026-11-03T05:33:40Z",
+   "pushedAt": "2026-11-03T05:48:41Z",
+   "updatedAt": "2026-11-03T05:48:44Z",
+   "liveCandidate": "https://nabinbabuuranw.sites.tab.bot",
+   "live": {
+    "url": "https://nabinbabuuranw.sites.tab.bot",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  },
+  {
+   "name": "kotha",
+   "url": "https://github.com/nabinbabuuranw/kotha",
+   "description": "Kotha (कोठा): rooms to rent in the Kathmandu Valley + a landlord/tenant rent book (BS months, receipts, repairs). Day 3 of 100 Platforms.",
+   "language": "TypeScript",
+   "topics": [
+    "100-platforms",
+    "bikram-sambat",
+    "cloudflare-d1",
+    "cloudflare-workers",
+    "kathmandu",
+    "landlord",
+    "nepal",
+    "property-management",
+    "react",
+    "rental",
+    "tailwindcss",
+    "typescript",
+    "vite"
+   ],
+   "homepage": "https://kotha-ktm.sites.tab.bot/",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": "MIT",
+   "defaultBranch": "main",
+   "createdAt": "2026-11-03T05:28:30Z",
+   "pushedAt": "2026-11-03T05:29:06Z",
+   "updatedAt": "2026-11-03T05:29:10Z",
+   "liveCandidate": "https://kotha-ktm.sites.tab.bot/",
+   "live": {
+    "url": "https://kotha-ktm.sites.tab.bot/",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  },
+  {
+   "name": "iebs",
+   "url": "https://github.com/nabinbabuuranw/iebs",
+   "description": "Inaruwa English Boarding School (IEBS), Inaruwa, Sunsari — school website + role-based admin (Next.js, Prisma, Clerk, Cloudinary)",
+   "language": "TypeScript",
+   "topics": [
+    "admin-dashboard",
+    "clerk",
+    "cloudinary",
+    "education",
+    "framer-motion",
+    "gsap",
+    "lenis",
+    "nepal",
+    "nextjs",
+    "postgresql",
+    "prisma",
+    "school-website",
+    "tailwindcss",
+    "typescript"
+   ],
+   "homepage": "https://iebs.sites.tab.bot",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": null,
+   "defaultBranch": "main",
+   "createdAt": "2026-11-03T04:01:39Z",
+   "pushedAt": "2026-11-03T04:36:31Z",
+   "updatedAt": "2026-11-03T04:36:34Z",
+   "liveCandidate": "https://iebs.sites.tab.bot",
+   "live": {
+    "url": "https://iebs.sites.tab.bot",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  },
+  {
+   "name": "byawastha",
+   "url": "https://github.com/nabinbabuuranw/byawastha",
+   "description": "Byawastha (व्यवस्था): all-in-one management system SaaS. 231 modules in 17 categories on one schema engine, Clerk auth, multi-tenant RBAC, marketplace, audit, super-admin. React + Vite + TS + Tailwind, Cloudflare Worker + D1. Phase 1.",
+   "language": "TypeScript",
+   "topics": [
+    "clerk",
+    "cloudflare-workers",
+    "d1",
+    "erp",
+    "management-system",
+    "multi-tenant",
+    "nepal",
+    "rbac",
+    "react",
+    "saas",
+    "tailwindcss",
+    "typescript"
+   ],
+   "homepage": "https://byawastha.sites.tab.bot/",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": "MIT",
+   "defaultBranch": "main",
+   "createdAt": "2026-11-02T06:24:06Z",
+   "pushedAt": "2026-11-02T06:24:58Z",
+   "updatedAt": "2026-11-02T06:25:02Z",
+   "liveCandidate": "https://byawastha.sites.tab.bot/",
+   "live": {
+    "url": "https://byawastha.sites.tab.bot/",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  },
+  {
+   "name": "chukta",
+   "url": "https://github.com/nabinbabuuranw/chukta",
+   "description": "Chukta (चुक्ता): VAT-ready bills and receivables for Nepali small businesses. 13% VAT, BS dates, ledgers, WhatsApp reminders. Day 2 of 100 platforms. React, Vite, TypeScript, Tailwind, Cloudflare Worker + D1.",
+   "language": "TypeScript",
+   "topics": [
+    "100-days-100-platforms",
+    "bikram-sambat",
+    "cloudflare-workers",
+    "d1",
+    "invoicing",
+    "nepal",
+    "react",
+    "receivables",
+    "tailwindcss",
+    "typescript",
+    "vat",
+    "vite"
+   ],
+   "homepage": "https://chukta.sites.tab.bot/",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": "MIT",
+   "defaultBranch": "main",
+   "createdAt": "2026-11-02T05:21:06Z",
+   "pushedAt": "2026-11-02T05:25:33Z",
+   "updatedAt": "2026-11-02T05:25:36Z",
+   "liveCandidate": "https://chukta.sites.tab.bot/",
+   "live": {
+    "url": "https://chukta.sites.tab.bot/",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  },
+  {
+   "name": "palo",
+   "url": "https://github.com/nabinbabuuranw/palo",
+   "description": "Palo (पालो): appointment booking + customer book for clinics and salons in Nepal. Day 1 of 100 platforms. React, Vite, TypeScript, Tailwind, Cloudflare Worker + D1.",
+   "language": "TypeScript",
+   "topics": [
+    "100-days-100-platforms",
+    "appointment-booking",
+    "cloudflare-d1",
+    "cloudflare-workers",
+    "kathmandu",
+    "nepal",
+    "react",
+    "saas",
+    "tailwindcss",
+    "typescript",
+    "vite"
+   ],
+   "homepage": "https://palo.sites.tab.bot/",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": "MIT",
+   "defaultBranch": "main",
+   "createdAt": "2026-11-01T14:52:25Z",
+   "pushedAt": "2026-11-01T14:58:19Z",
+   "updatedAt": "2026-11-01T14:58:23Z",
+   "liveCandidate": "https://palo.sites.tab.bot/",
+   "live": {
+    "url": "https://palo.sites.tab.bot/",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  },
+  {
+   "name": "nepali-date",
+   "url": "https://github.com/nabinbabuuranw/nepali-date",
+   "description": "📅 Free Bikram Sambat (BS) ↔ AD date converter for Nepal — web app + tiny zero-dependency JS library. Live: https://nepali-date.sites.tab.bot/",
+   "language": "JavaScript",
+   "topics": [
+    "bikram-sambat",
+    "date-converter",
+    "javascript",
+    "nepal",
+    "nepali",
+    "nepali-calendar",
+    "open-source",
+    "patro"
+   ],
+   "homepage": "https://nepali-date.sites.tab.bot/",
+   "stars": 0,
+   "forks": 0,
+   "archived": false,
+   "license": "MIT",
+   "defaultBranch": "main",
+   "createdAt": "2026-11-01T13:47:59Z",
+   "pushedAt": "2026-11-01T13:48:41Z",
+   "updatedAt": "2026-11-01T13:48:58Z",
+   "liveCandidate": "https://nepali-date.sites.tab.bot/",
+   "live": {
+    "url": "https://nepali-date.sites.tab.bot/",
+    "ok": true,
+    "checkedAt": "2026-11-03T12:50:13.630Z"
+   }
+  }
+ ]
+}
