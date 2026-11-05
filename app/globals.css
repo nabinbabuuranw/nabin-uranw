@@ -50,3 +50,7 @@ section[id], header[id] { scroll-margin-top: 76px; }
    When hydration works (html.hydrated) the original Framer Motion entrance animations run untouched. */
 @keyframes reveal-failsafe { to { opacity: 1; transform: none; } }
 html:not(.hydrated) main [style*="opacity: 0"], html:not(.hydrated) main [style*="opacity:0"] { animation: reveal-failsafe .35s ease-out 1.8s forwards; }
+
+/* Content protection (deterrence only): images and video cannot be dragged or selected; touch long-press menus are off on media. */
+img, video, picture, canvas, svg:not(.lucide) { -webkit-user-drag: none; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+input, textarea, select, [contenteditable] { -webkit-user-select: text; user-select: text; -webkit-touch-callout: default; }
