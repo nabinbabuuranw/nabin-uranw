@@ -36,11 +36,6 @@ export const caseStudies: CaseStudy[] = [
     problem: "Developers and users in Nepal constantly convert between BS and AD dates. A tiny library with no dependencies is easy to reuse.",
     built: ["BS to AD and AD to BS conversion", "A web app anyone can use", "A zero-dependency JavaScript library", "Open source on GitHub"],
     stack: ["JavaScript"], note: "Free and open source." },
-  { slug: "portfolio-with-request-system", repo: "nabinbabuuranw-site", title: "This portfolio: with a project-request and tracking system", kind: "Portfolio and request tracking",
-    summary: "The portfolio of Nabin Babu Uranw with a project-request system: request IDs, status tracking and an admin area.",
-    problem: "A visitor who wants a website should be able to send a request and check its status later, instead of waiting by email.",
-    built: ["Request form with request IDs and a status page", "Admin area behind Clerk", "Projects synced from GitHub", "Next.js, Prisma and PostgreSQL in the repository version"],
-    stack: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "Clerk", "Tailwind CSS"], note: "On this Vercel copy the request form and admin are static and not active; they run on the original deployment." },
 ];
 
 export type Landing = { slug: string; title: string; h1: string; description: string; lead: string; audience: string[]; offers: { t: string; b: string }[]; stack: string[]; projects: string[]; faqs: { q: string; a: string }[]; extra?: { h: string; p: string[] }[] };
@@ -51,7 +46,7 @@ export const landings: Landing[] = [
     lead: "I’m Nabin Babu Uranw, an independent web developer working from Inaruwa, Sunsari, in Koshi Province. I design and build websites for businesses, schools and personal brands anywhere in Nepal, and I handle everything from layout to deployment.",
     audience: ["Businesses in Nepal that need a clear, fast website customers can read on a phone", "Schools and institutions that need a site plus an admin area staff can update", "Individuals who want a portfolio that explains their work properly"],
     offers: [{ t: "Business and brand websites", b: "Designed from your content, with a written colour and type system, and tested from 375 px phones to wide desktops." }, { t: "Websites with an admin area", b: "Role-based sign-in so staff update content safely. The IEBS school website is built this way." }, { t: "Search-ready by default", b: "Unique titles and descriptions, a sitemap, structured data and fast pages, so your site can be found." }, { t: "Maintenance after launch", b: "Fixes, updates and new features once the site is live." }],
-    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Cloudflare Workers", "Clerk"], projects: ["iebs", "nabinbabuuranw-site", "kotha"],
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Prisma", "PostgreSQL", "Cloudflare Workers", "Clerk"], projects: ["iebs", "kotha"],
     faqs: [{ q: "Where are you based?", a: "I work from Inaruwa, Sunsari, in Nepal’s Koshi Province, and I take projects from across Nepal." }, { q: "Do you build the design as well as the code?", a: "Yes. I write the palette, typography and layouts first, then build them in code." }, { q: "How do I start?", a: "Use the request form on the home page or message me on WhatsApp with what you need." }],
     extra: [{ h: "How I build a website", p: [sharedProcess, "Every project is checked for accessibility, security headers and page speed before it goes live."] }] },
   { slug: "full-stack-developer-nepal", title: "Full Stack Developer in Nepal", h1: "Full-stack developer in Nepal: front end, back end and database",
@@ -73,7 +68,7 @@ export const landings: Landing[] = [
     lead: "I’m an independent developer, so you work with me directly, not through an agency. I write down the scope before building, show real progress, and stay available after launch.",
     audience: ["Small businesses that want one accountable person", "Schools and institutions in Sunsari and Koshi Province", "Founders who need a first version built properly"],
     offers: [{ t: "Clear scope", b: "A written description of what will be built before work starts." }, { t: "Direct communication", b: "You talk to the person writing the code, by WhatsApp or email." }, { t: "Websites and web apps", b: "From a business site to a role-based system with a database." }, { t: "After-launch support", b: "Fixes, updates and new features." }],
-    stack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Cloudflare Workers"], projects: ["iebs", "kotha", "nabinbabuuranw-site"],
+    stack: ["Next.js", "React", "TypeScript", "Node.js", "PostgreSQL", "Cloudflare Workers"], projects: ["iebs", "kotha"],
     faqs: [{ q: "How do I request a project?", a: "Use the request form on the home page, or message me on WhatsApp." }, { q: "Do you work with clients outside Inaruwa?", a: "Yes. I work remotely with clients across Nepal." }, { q: "Do you take on work through marketplaces?", a: "I take direct projects. Contact me through this website." }] },
   { slug: "ai-developer-nepal", title: "AI Automation and Integrations Developer in Nepal", h1: "AI-assisted automation and API integrations in Nepal",
     description: "Developer in Nepal for automation and API integrations: payments, maps, email and messaging, built with modern AI-assisted tooling where it helps.",
