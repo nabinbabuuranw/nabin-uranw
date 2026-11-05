@@ -1,0 +1,35 @@
+{
+  "name": "nabin-babu-uranw-portfolio",
+  "private": true,
+  "version": "2.0.0",
+  "description": "Nabin Babu Uranw \u2014 Independent Full-Stack Developer. Portfolio v2 (Next.js static export + Cloudflare Worker API, projects auto-discovered from GitHub).",
+  "scripts": {
+    "fetch:github": "node scripts/fetch-github.mjs",
+    "dev": "next dev",
+    "build": "node scripts/fetch-github.mjs && next build && node scripts/build-worker.mjs",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test test/site.test.mjs"
+  },
+  "dependencies": {
+    "framer-motion": "^11.18.0",
+    "lucide-react": "^0.460.0",
+    "next": "^15.5.7",
+    "pdf-lib": "^1.17.1",
+    "react": "~19.2.3",
+    "react-dom": "~19.2.3",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "autoprefixer": "^10.4.20",
+    "esbuild": "^0.25.0",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "~5.7.2"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
