@@ -8,7 +8,7 @@ const display = Bricolage_Grotesque({ subsets: ["latin"], weight: ["500", "600",
 const sans = Geist({ subsets: ["latin"], variable: "--font-sans", display: "swap" });
 const mono = Geist_Mono({ subsets: ["latin"], weight: ["400", "500"], variable: "--font-mono", display: "swap" });
 
-const title = `${site.name} — ${site.role}`;
+const title = site.name; // short browser title; the role lives in the description and the hero subtitle
 const description =
   "Nabin Babu Uranw (Nabin Uranw) is an independent full-stack web developer and UI/UX designer in Inaruwa, Sunsari, Nepal. Websites, web apps and business systems built end to end, with public projects on GitHub.";
 
@@ -50,8 +50,8 @@ const jsonLd = {
       knowsAbout: ["Web development", "Full-stack development", "React", "Next.js", "TypeScript", "Node.js", "Tailwind CSS", "Cloudflare Workers", "PostgreSQL", "UI/UX design"],
       owns: (gh.repos as { name: string; url: string }[]).map((r) => ({ "@type": "SoftwareSourceCode", name: r.name, codeRepository: r.url })),
     },
-    { "@type": "WebSite", "@id": `${site.url}/#website`, url: site.url, name: title, inLanguage: "en", publisher: { "@id": `${site.url}/#person` } },
-    { "@type": "ProfilePage", url: site.url, name: title, mainEntity: { "@id": `${site.url}/#person` } },
+    { "@type": "WebSite", "@id": `${site.url}/#website`, url: site.url, name: site.name, inLanguage: "en", publisher: { "@id": `${site.url}/#person` } },
+    { "@type": "ProfilePage", url: site.url, name: site.name, mainEntity: { "@id": `${site.url}/#person` } },
   ],
 };
 
